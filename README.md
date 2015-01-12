@@ -7,6 +7,7 @@
 #########################################################
 
 $lien_autologin est votre lien d'autologin dans la partie Administration de l'intra.
+
 $lien_intra est le lien de l'intra d'epitech.
 
 
