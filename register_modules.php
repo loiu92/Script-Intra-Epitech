@@ -5,16 +5,16 @@ $module = '';          // Mettez un mot clé concernant le module, la casse n'es
 
 
 $return = login_intra_json($lien_autologin, $lien_intra_json);  // Fais une requête qui se connecte à l'intra.
-$return = parse_epitech_webservice($return);                    // Parse la 1ère ligne
-$intra = json_decode($return);
-$lien_module = found_word($intra, $module);
+$return = parse_epitech_webservice($return);                    // Parse la 1ère ligne.
+$intra = json_decode($return);					// Decode JSON le resultat de la 1ère requete.
+$lien_module = found_word($intra, $module);			// Cherche une correspondance dans les noms de modules avec $module.
 if ($lien_module === -1)
 {
 	return -1;
 }
 $lien_module = "https://intra.epitech.eu$lien_module" . "register?format=json";
-register_module($lien_autologin, $lien_module);
-mail_robotique($module, $intra);
+register_module($lien_autologin, $lien_module);			// Fais une requête qui inscris le compte au module.
+mail_robotique($module, $intra);				// Envoie un mail de succès d'inscription à l'email du compte.
 
 function login_intra_json($lien_autologin, $lien_intra_json)
 {
