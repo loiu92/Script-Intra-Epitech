@@ -1,6 +1,6 @@
 <?php
 $lien_intra_json = 'https://intra.epitech.eu' . '?format=json';
-$lien_autologin = '';  // Mettez ici votre lien d'auto-login
+$lien_autologin = 'https://intra.epitech.eu' . $argv[1];  // Mettez ici votre lien d'auto-login
 $module = '';          // Mettez un mot clé concernant le module, la casse n'est pas prise en compte, exemple : 'robotique' pour le module 'B1 - Robotique'
 
 
@@ -24,7 +24,7 @@ function login_intra_json($lien_autologin, $lien_intra_json)
 	curl_setopt($curl, CURLOPT_URL, $lien_autologin);
 	curl_setopt($curl, CURLOPT_COOKIESESSION, true);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($curl, CURLOPT_POST, false); 
+	curl_setopt($curl, CURLOPT_POST, false);
 	curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 	curl_setopt($curl, CURLOPT_COOKIEJAR, realpath($path_cookie));
 	$return = curl_exec($curl);
