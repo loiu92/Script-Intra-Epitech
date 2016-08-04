@@ -18,13 +18,12 @@ $script_dir = getcwd();
 $return = login_intra_json($lien_autologin, $lien_elearning, $script_dir);
 $intra = json_decode($return);
 
-for ($nb_semester=4; $nb_semester < 5; $nb_semester++) {
-	$modules = list_modules_semester($intra, $nb_semester);
+for ($nb_semester=0; $nb_semester < 5; $nb_semester++) {
 	init_directory($script_dir);
 	init_directory_semester($nb_semester, $script_dir);
-	create_dir_modules($intra, $nb_semester, $modules, $script_dir);
 
 	foreach ($intra[$nb_semester]->modules as $working_module) {
+		mkdir($script_dir . '/Modules/Semestre' . $nb_semester . '/' . $working_module->slug);
 			foreach ($working_module->classes as $classes) {
 				chdir($script_dir . '/Modules/Semestre' . $nb_semester . '/' . $working_module->slug);
 				mkdir($classes->slug);
@@ -65,23 +64,6 @@ function init_directory_semester($nb_semester, $script_dir)
 	mkdir($script_dir . '/Modules/Semestre' . $nb_semester);
 }
 
-function create_dir_modules($intra, $nb_semester, $modules, $script_dir)
-{
-	foreach ($modules as $key) {
-		mkdir($script_dir . '/Modules/Semestre' . $nb_semester . '/'. $key);
-	}
-}
-
-function list_modules_semester($intra, $nb_semester)
-{
-	$i = 0;
-	foreach ($intra[$nb_semester]->modules as $key) {
-			$modules_semester[$i] = $key->slug;
-			$i = $i + 1;
-	}
-	return $modules_semester;
-}
-
 function get_file($steps, $script_dir, $lien_autologin)
 {
 	$path_cookie = $script_dir . '/cookies_connexion.txt';
@@ -102,6 +84,7 @@ function get_file($steps, $script_dir, $lien_autologin)
 	curl_close($curl);
 	$name_content = substr($steps->step->fullpath, strripos($steps->step->fullpath, "/") + 1);
 	file_put_contents($name_content, $content);
+	echo $name_content . "\r";
 }
 
 ?>
