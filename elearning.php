@@ -11,9 +11,9 @@ $intra = json_decode($return);					// Decode JSON le resultat de la 1ère requet
 #var_dump ($intra[0]["modules"]["B-ANG-001"]);
 for ($nb_semester=0; $nb_semester < 4; $nb_semester++) {
 	$modules = list_modules_semester($intra, $nb_semester);
-	init_directory();
-	init_directory_semester($nb_semester);
-	create_dir_modules($intra, $nb_semester, $modules);
+	init_directory($script_dir);
+	init_directory_semester($nb_semester, $script_dir);
+	create_dir_modules($intra, $nb_semester, $modules, $script_dir);
 
 	foreach ($intra[$nb_semester]->modules as $working_module) {
 			chdir($script_dir . '/Modules/Semestre' . $nb_semester . '/' . $working_module->slug);
@@ -42,20 +42,20 @@ function login_intra_json($lien_autologin, $lien_elearning)
 	curl_close($curl);
 	return $return;
 }
-function init_directory()
+function init_directory($script_dir)
 {
-	mkdir('./Modules');
+	mkdir($script_dir . './Modules');
 }
 
-function init_directory_semester($nb_semester)
+function init_directory_semester($nb_semester, $script_dir)
 {
-	mkdir('./Modules/Semestre' . $nb_semester);
+	mkdir($script_dir . '/Modules/Semestre' . $nb_semester);
 }
 
-function create_dir_modules($intra, $nb_semester, $modules)
+function create_dir_modules($intra, $nb_semester, $modules, $script_dir)
 {
 	foreach ($modules as $key) {
-		mkdir('./Modules/Semestre' . $nb_semester . '/'. $key);
+		mkdir($script_dir . '/Modules/Semestre' . $nb_semester . '/'. $key);
 	}
 }
 
