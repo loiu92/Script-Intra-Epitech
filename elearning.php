@@ -44,7 +44,7 @@ function login_intra_json($lien_autologin, $lien_elearning)
 }
 function init_directory($script_dir)
 {
-	mkdir($script_dir . './Modules');
+	mkdir($script_dir . '/Modules');
 }
 
 function init_directory_semester($nb_semester, $script_dir)
