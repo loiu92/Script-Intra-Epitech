@@ -84,7 +84,7 @@ function get_file($steps, $script_dir, $lien_autologin)
 	curl_close($curl);
 	$name_content = substr($steps->step->fullpath, strripos($steps->step->fullpath, "/") + 1);
 	file_put_contents($name_content, $content);
-	echo $name_content . "\r";
+	echo $name_content . "\n";
 }
 
 ?>
