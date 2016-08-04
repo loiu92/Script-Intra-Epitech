@@ -16,6 +16,7 @@ for ($nb_semester=0; $nb_semester < 4; $nb_semester++) {
 	foreach ($intra[$nb_semester]->modules as $working_module) {
 			chdir($script_dir . '/Modules/Semestre' . $nb_semester . '/' . $working_module->slug);
 			foreach ($working_module->classes as $classes) {
+				mkdir($classes->slug);
 				chdir($classes->slug);
 				foreach ($classes->steps as $steps) {
 					$path_cookie = 'cookies_connexion.txt';
