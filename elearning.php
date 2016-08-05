@@ -18,7 +18,8 @@ $script_dir = getcwd();
 $return = login_intra_json($lien_autologin, $lien_elearning, $script_dir);
 $intra = json_decode($return);
 
-for ($nb_semester=0; $nb_semester < 5; $nb_semester++) {
+foreach ($intra as $semester) {
+	$nb_semester = $semester->semester;
 	init_directory($script_dir);
 	init_directory_semester($nb_semester, $script_dir);
 
