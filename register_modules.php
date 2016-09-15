@@ -1,6 +1,17 @@
 <?php
+if (!isset($argv[1]))
+	{
+		echo "Veuillez mettre votre lien d'autologin\n";
+		return -1;
+	}
+else if ($argv[1] == "-h")
+{
+	echo "Usage: ./" . $argv[0] . " autologin_token (ex: auth-1a2b3c4d5e) [directory for files]\n";
+	return 0;
+}
+$lien_autologin = 'https://intra.epitech.eu/' . $argv[1];
+
 $lien_intra_json = 'https://intra.epitech.eu' . '?format=json';
-$lien_autologin = 'https://intra.epitech.eu' . $argv[1];  // Mettez ici votre lien d'auto-login
 $module = '';          // Mettez un mot clé concernant le module, la casse n'est pas prise en compte, exemple : 'robotique' pour le module 'B1 - Robotique'
 
 
