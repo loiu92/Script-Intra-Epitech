@@ -6,7 +6,7 @@
 #########################################################
 #########################################################
 
-Pour utiliser ces scripts, vous devez obtenier votre lien d'autologin dans la partie Administration de l'Intra d'Epitech.
+Pour utiliser ces scripts, vous devez obtenir votre lien d'autologin dans la partie Administration de l'Intra d'Epitech.
 
 Pour utiliser le script "register_modules.php", vous devez ajouter en haut du fichier à la variable "$module", une partie du nom du module (insensible à la casse).
 
