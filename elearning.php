@@ -23,7 +23,7 @@ foreach ($intra as $semester) {
 	init_directory($script_dir);
 	init_directory_semester($nb_semester, $script_dir);
 
-	foreach ($intra[$nb_semester]->modules as $working_module) {
+	foreach ($intra->$nb_semester->modules as $working_module) {
 		mkdir($script_dir . '/Modules/Semestre' . $nb_semester . '/' . $working_module->slug);
 			foreach ($working_module->classes as $classes) {
 				chdir($script_dir . '/Modules/Semestre' . $nb_semester . '/' . $working_module->slug);
